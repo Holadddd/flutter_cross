@@ -1,5 +1,6 @@
 import UIKit
 import Flutter
+import TPDirect
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -10,13 +11,12 @@ import Flutter
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        setupTapPay()
         
         let controller: FlutterViewController = window?.rootViewController as! FlutterViewController
-//        let navigationController: UINavigationController = UINavigationController(rootViewController: controller)
         let batteryChannel = FlutterMethodChannel(name: "samples.flutter.dev/payment",
                                                   binaryMessenger: controller.binaryMessenger)
         
-//        window.rootViewController = navigationController
         batteryChannel.setMethodCallHandler({
             [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
             guard let self else { result(FlutterMethodNotImplemented); return }
@@ -31,7 +31,6 @@ import Flutter
                 
                 let viewController: PayViewController = PayViewController(orderID: orderID)
                 viewController.delegate = self
-//                navigationController.pushViewController(viewController, animated: true)
                 controller.present(viewController, animated: true)
             default:
                 result(FlutterMethodNotImplemented)
@@ -42,6 +41,13 @@ import Flutter
         
         GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+
+    private func setupTapPay() {
+        //TapPat setup
+        let appID: Int32 = 12348
+        let appKey: String = "app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF"
+        TPDSetup.setWithAppId(appID, withAppKey: appKey, with: TPDServerType.sandBox)
     }
 }
 

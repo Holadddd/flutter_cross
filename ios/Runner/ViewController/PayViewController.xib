@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="orderIDTitle" destination="dFH-Xn-IBA" id="x8C-H1-9cq"/>
                 <outlet property="payButton" destination="mvr-eL-InO" id="3Ws-Ae-2ih"/>
+                <outlet property="tappayContainer" destination="Zgr-tZ-fDX" id="I7Z-ll-6m6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,36 +22,57 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFH-Xn-IBA">
-                    <rect key="frame" x="175.66666666666666" y="79" width="42" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvr-eL-InO">
-                    <rect key="frame" x="170.66666666666666" y="763" width="51.666666666666657" height="35"/>
-                    <color key="backgroundColor" red="0.72502046819999999" green="0.62613719700000003" blue="0.52960497139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Pay">
-                        <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </buttonConfiguration>
-                    <connections>
-                        <action selector="clickedPay:" destination="-1" eventType="touchUpInside" id="Zfo-wW-hlD"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sRT-hb-H6m">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFH-Xn-IBA">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="pTx-Kk-Qun"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zgr-tZ-fDX">
+                            <rect key="frame" x="0.0" y="22" width="393" height="705"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvr-eL-InO">
+                            <rect key="frame" x="0.0" y="727" width="393" height="32"/>
+                            <color key="backgroundColor" red="0.72502046819999999" green="0.62613719700000003" blue="0.52960497139999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="CyM-94-pkB"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Pay">
+                                <color key="baseForegroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="clickedPay:" destination="-1" eventType="touchUpInside" id="Zfo-wW-hlD"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Zgr-tZ-fDX" firstAttribute="width" secondItem="sRT-hb-H6m" secondAttribute="width" id="e8l-w1-v2K"/>
+                    </constraints>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemCyanColor"/>
             <constraints>
-                <constraint firstItem="mvr-eL-InO" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="5Zi-st-Dpf"/>
-                <constraint firstItem="dFH-Xn-IBA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Hpp-oW-c2b"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mvr-eL-InO" secondAttribute="bottom" constant="20" id="eUC-S2-T0n"/>
-                <constraint firstItem="dFH-Xn-IBA" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="wtZ-Q7-Rpb"/>
+                <constraint firstItem="sRT-hb-H6m" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RNg-Gr-Rlo"/>
+                <constraint firstItem="sRT-hb-H6m" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cll-s1-kMT"/>
+                <constraint firstItem="sRT-hb-H6m" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="uae-i9-SiD"/>
+                <constraint firstItem="sRT-hb-H6m" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="xAD-I3-Ujh"/>
             </constraints>
             <point key="canvasLocation" x="-45" y="20"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemCyanColor">
             <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
